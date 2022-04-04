@@ -37,7 +37,7 @@ public class JDBC_EX01 {
 			if (rnum==1) {
 				System.out.println("회원탈퇴성공!!!");
 			} else {
-				System.out.println("회원탈퇴실패!!!");
+				System.out.println("회원삭제실패!!!");
 			}
 			
 			

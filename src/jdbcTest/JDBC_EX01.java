@@ -12,6 +12,7 @@ public class JDBC_EX01 {
 		String username = "root";
 		String password = "paul6422";
 		String query = "select * from smembers";
+		String query2 = "delete from smembers where id='tiger'";
 		
 		ResultSet ret = null;
 		Connection conn = null;//DB 연결 객체 선언
@@ -23,6 +24,22 @@ public class JDBC_EX01 {
 			System.out.println("DB 연결완료!!!");
 			stmt = conn.createStatement();//SQL실행용 statement 객체 생성
 			ret = stmt.executeQuery(query);//SQL실행-반환되는 결과값을 ResultSet으로 받음
+			
+			while(ret.next()) {
+				String pid = ret.getString("id");
+				String ppw = ret.getString("pw");
+				System.out.println(pid);
+				System.out.println(ppw);
+			}
+			
+			int rnum = stmt.executeUpdate(query2);//성공여부 반환 int 1이면 성공
+			
+			if (rnum==1) {
+				System.out.println("회원탈퇴성공!!!");
+			} else {
+				System.out.println("회원탈퇴실패!!!");
+			}
+			
 			
 		} catch(ClassNotFoundException e) {
 			System.out.println("JDBC 드라이버 로드 에러!!!");
